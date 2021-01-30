@@ -2,10 +2,12 @@ import os
 import glob
 import pickle
 import xgboost as xgb
+import pandas as pd
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LogisticRegression
+from humor_features.HumorFeatures import HumorFeatures
 
 
 class Models:
@@ -17,7 +19,6 @@ class Models:
 
         if self.dataset != None:        
             self.prepare_training_set()
-
             self.fit_xgboost()
             self.fit_random_forest()
             self.fit_logistic_regression()
@@ -40,7 +41,6 @@ class Models:
     def fit_xgboost(self):
         model = xgb.XGBClassifier(random_state=1,learning_rate=0.01)
         model.fit(self.X, self.y)
-
         self.methods.append("XGBoost")
         self.models.append(model)
 
@@ -89,7 +89,6 @@ class Models:
 
 
     def predict(self, method, val):
-        print(self.methods.index(method))
         return self.models[self.methods.index(method)].predict(val)
 
 
