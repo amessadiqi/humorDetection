@@ -7,7 +7,10 @@ class DataProcessor:
     def __init__(self, dataset):
         self.dataset = dataset
         self.dataset.drop(columns=["text", "textSeq", "tagged", "posNegObjSenti", "posNegObjSentiSum", "posNegObjSentiMean", "tags", "tagsNameChange"],inplace=True)
-        self.dataset["humor"] = self.dataset["humor"].astype(int)
+        try:
+            self.dataset["humor"] = self.dataset["humor"].astype(int)
+        except:
+            pass
 
 
     def get_processed_df(self):
