@@ -178,19 +178,3 @@ class HumorFeatures:
 
     def getAllFeatures(self):
         return self.getStructure().getFreq().getWrittenSpoken().getSyno().getSynsets().getSentiment().df
-
-    """
-    def cleaner(df):
-        df.drop(columns=["text","textSeq"],inplace=True)
-        return df
-    """
-    
-"""
-if __name__=='__main__':
-    features = HumorFeatures()
-
-    f1 = features.lemmatize(sentence, seq=False)
-    f2 = features.lemmatizeWord(sentence)
-
-    f = features.getFeatures(features=['f1', 'f2', 'f3'])
-"""

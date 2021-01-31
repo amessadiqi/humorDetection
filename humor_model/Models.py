@@ -112,7 +112,3 @@ class Models:
 
     def predict(self, method, val):
         return self.models[self.methods.index(method)].predict(val)
-
-
-if __name__=='__main__':
-    pass
