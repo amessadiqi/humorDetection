@@ -176,6 +176,9 @@ class HumorFeatures:
         return self
 
 
+    def getAllFeatures(self):
+        return self.getStructure().getFreq().getWrittenSpoken().getSyno().getSynsets().getSentiment().df
+
     """
     def cleaner(df):
         df.drop(columns=["text","textSeq"],inplace=True)
