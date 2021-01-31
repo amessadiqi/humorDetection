@@ -7,7 +7,7 @@ from prediction_server.app import app
 
 class HumorDetector:
     def __init__(self, dataset = None):
-        if not dataset == None:
+        if dataset != None:
             self.dataset = HumorFeatures(dataset).getStructure().getFreq().getWrittenSpoken().getSyno().getSynsets().getSentiment()
             self.dataset = DataProcessor(dataset=self.dataset.df).get_processed_df()
 
@@ -27,6 +27,9 @@ class HumorDetector:
 
     def train(self):
         pass
+
+    def performance_overview(self):
+        Models(dataset=self.dataset).displayScores()
 
 
     def prediction_server(self, host, port):
